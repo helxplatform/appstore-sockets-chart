@@ -1,0 +1,26 @@
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ include "appstore-ws.fullname" . }}-role
+rules:
+- apiGroups:
+  - ""
+  resources:
+    - pods
+  verbs:
+    - get
+    - list
+    - watch
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ include "appstore-ws.fullname" . }}-rolebinding
+subjects:
+- kind: ServiceAccount
+  name: {{ include "appstore-ws.serviceAccountName" . }}
+  namespace: {{ .Release.Namespace }}
+roleRef:
+  kind: Role
+  name: {{ include "appstore-ws.fullname" . }}-role
+  apiGroup: rbac.authorization.k8s.io
