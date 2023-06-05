@@ -45,6 +45,11 @@ spec:
                 secretKeyRef:
                   key: PUBLISHER_SECRET
                   name: {{ include "appstore-ws.fullname" . }}
+            - name: APPSTORE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: APPSTORE_HOST
+                  name: {{ include "appstore-ws.fullname" . }}-env
         - name: {{ .Chart.Name }}-monitoring
           image: "{{ .Values.monitoring.image.repository }}:{{ .Values.monitoring.image.tag | default (printf "v%s" .Chart.AppVersion) }}"
           imagePullPolicy: {{ .Values.monitoring.image.pullPolicy }}

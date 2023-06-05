@@ -6,3 +6,4 @@ metadata:
 data:
   REQUIRE_PUBLISH_SECRET: "{{ .Values.requirePublishSecret }}"
   WS_HOST: "{{ .Values.serviceName }}"
+  APPSTORE_HOST: "{{ .Release.Name }}-appstore:8000"

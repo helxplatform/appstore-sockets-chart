@@ -2,7 +2,7 @@ monitoring:
   image:
     repository: frostyfan109/ws-monitoring
     pullPolicy: IfNotPresent
-    tag: v1.1.0
+    tag: latest
   
   resources: {}
 
@@ -10,7 +10,7 @@ monitoring:
 image:
   repository: frostyfan109/ws-test
   pullPolicy: IfNotPresent
-  tag: v1.1.0
+  tag: latest
 
 nameOverride: ""
 fullnameOverride: ""
