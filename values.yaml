@@ -6,7 +6,6 @@ monitoring:
   
   resources: {}
 
-
 image:
   repository: frostyfan109/ws-test
   pullPolicy: IfNotPresent
