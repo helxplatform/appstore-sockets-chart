@@ -1,7 +1,7 @@
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: {{ include "appstore-ws.fullname" . }}-role
+  name: {{ include "appstore-sockets.fullname" . }}-role
 rules:
 - apiGroups:
   - ""
@@ -15,12 +15,12 @@ rules:
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: {{ include "appstore-ws.fullname" . }}-rolebinding
+  name: {{ include "appstore-sockets.fullname" . }}-rolebinding
 subjects:
 - kind: ServiceAccount
-  name: {{ include "appstore-ws.serviceAccountName" . }}
+  name: {{ include "appstore-sockets.serviceAccountName" . }}
   namespace: {{ .Release.Namespace }}
 roleRef:
   kind: Role
-  name: {{ include "appstore-ws.fullname" . }}-role
+  name: {{ include "appstore-sockets.fullname" . }}-role
   apiGroup: rbac.authorization.k8s.io

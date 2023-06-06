@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "appstore-ws.fullname" . }}
+  name: {{ include "appstore-sockets.fullname" . }}
   labels:
-    {{- include "appstore-ws.labels" . | nindent 4 }}
+    {{- include "appstore-sockets.labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
-      {{- include "appstore-ws.selectorLabels" . | nindent 6 }}
+      {{- include "appstore-sockets.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -15,9 +15,9 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "appstore-ws.selectorLabels" . | nindent 8 }}
+        {{- include "appstore-sockets.selectorLabels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ include "appstore-ws.serviceAccountName" . }}
+      serviceAccountName: {{ include "appstore-sockets.serviceAccountName" . }}
       {{- if .Values.securityContext }}
       securityContext:
         runAsUser: {{ .Values.securityContext.runAsUser }}
@@ -39,17 +39,17 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: REQUIRE_PUBLISH_SECRET
-                  name: {{ include "appstore-ws.fullname" . }}-env
+                  name: {{ include "appstore-sockets.fullname" . }}-env
             - name: PUBLISHER_SECRET
               valueFrom:
                 secretKeyRef:
                   key: PUBLISHER_SECRET
-                  name: {{ include "appstore-ws.fullname" . }}
+                  name: {{ include "appstore-sockets.fullname" . }}
             - name: APPSTORE_HOST
               valueFrom:
                 configMapKeyRef:
                   key: APPSTORE_HOST
-                  name: {{ include "appstore-ws.fullname" . }}-env
+                  name: {{ include "appstore-sockets.fullname" . }}-env
         - name: {{ .Chart.Name }}-monitoring
           image: "{{ .Values.monitoring.image.repository }}:{{ .Values.monitoring.image.tag | default (printf "v%s" .Chart.AppVersion) }}"
           imagePullPolicy: {{ .Values.monitoring.image.pullPolicy }}
@@ -64,7 +64,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: PUBLISHER_SECRET
-                  name: {{ include "appstore-ws.fullname" . }}
+                  name: {{ include "appstore-sockets.fullname" . }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

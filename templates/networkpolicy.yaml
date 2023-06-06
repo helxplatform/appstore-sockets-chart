@@ -5,7 +5,7 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      app.kubernetes.io/name: appstore-ws
+      app.kubernetes.io/name: appstore-sockets
   policyTypes:
   - Ingress
   ingress:

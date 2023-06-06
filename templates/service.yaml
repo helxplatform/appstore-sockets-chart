@@ -3,14 +3,14 @@ kind: Service
 metadata:
   name: {{ .Values.serviceName }}
   labels:
-    {{- include "appstore-ws.labels" . | nindent 4 }}
+    {{- include "appstore-sockets.labels" . | nindent 4 }}
   {{- if .Values.ambassador.flag }}
   annotations:
     getambassador.io/config: |
       ---
       apiVersion: ambassador/v1
       kind: Mapping
-      name: appstore-ws-sock-mapping
+      name: appstore-sockets-sock-mapping
       use_websocket: true
       prefix: /ws
       rewrite: /ws
@@ -27,4 +27,4 @@ spec:
       port: 5555
       targetPort: 5555
   selector:
-    {{- include "appstore-ws.selectorLabels" . | nindent 4 }}
+    {{- include "appstore-sockets.selectorLabels" . | nindent 4 }}

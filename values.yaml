@@ -29,7 +29,7 @@ securityContext:
   runAsGroup: 0
   fsGroup: 0
 
-serviceName: appstore-ws-service
+serviceName: appstore-sockets-service
 service:
   type: ClusterIP
   port: 80
