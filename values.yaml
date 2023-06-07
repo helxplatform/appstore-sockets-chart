@@ -1,15 +1,15 @@
 monitoring:
   image:
-    repository: frostyfan109/ws-monitoring
+    repository: containers.renci.org/appstore-sockets/monitoring
     pullPolicy: IfNotPresent
-    tag: latest
+    tag: ""
   
   resources: {}
 
 image:
-  repository: frostyfan109/ws-test
+  repository: containers.renci.org/appstore-sockets/server
   pullPolicy: IfNotPresent
-  tag: latest
+  tag: ""
 
 nameOverride: ""
 fullnameOverride: ""
