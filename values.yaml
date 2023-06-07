@@ -1,13 +1,13 @@
 monitoring:
   image:
-    repository: containers.renci.org/appstore-sockets/monitoring
+    repository: containers.renci.org/helxplatform/appstore-sockets/monitoring
     pullPolicy: IfNotPresent
     tag: ""
   
   resources: {}
 
 image:
-  repository: containers.renci.org/appstore-sockets/server
+  repository: containers.renci.org/helxplatform/appstore-sockets/server
   pullPolicy: IfNotPresent
   tag: ""
 
