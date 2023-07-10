@@ -16,7 +16,7 @@ fullnameOverride: ""
 
 requirePublishSecret: true
 # If running outside helx-chart, you will need to override this value.
-appstoreServiceNameOverride: "foobar"
+appstoreServiceNameOverride: ""
 
 podAnnotations: {}
 
