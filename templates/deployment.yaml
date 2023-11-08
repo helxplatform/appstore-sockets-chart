@@ -18,12 +18,8 @@ spec:
         {{- include "appstore-sockets.selectorLabels" . | nindent 8 }}
     spec:
       serviceAccountName: {{ include "appstore-sockets.serviceAccountName" . }}
-      {{- if .Values.securityContext }}
       securityContext:
-        runAsUser: {{ .Values.securityContext.runAsUser }}
-        runAsGroup: {{ .Values.securityContext.runAsGroup }}
-        fsGroup: {{ .Values.securityContext.fsGroup }}
-      {{- end }}
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default (printf "v%s" .Chart.AppVersion) }}"
