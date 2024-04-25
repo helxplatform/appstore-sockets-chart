@@ -1,6 +1,6 @@
 # appstore-sockets
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
+![Version: 2.1.0](https://img.shields.io/badge/Version-2.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.1.0](https://img.shields.io/badge/AppVersion-1.1.0-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -10,6 +10,7 @@ A Helm chart for Kubernetes
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
 | ambassador.flag | bool | `true` |  |
+| appstoreServiceNameOverride | string | `""` |  |
 | fullnameOverride | string | `""` |  |
 | global.ambassador_id | string | `nil` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
@@ -22,11 +23,10 @@ A Helm chart for Kubernetes
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
+| podSecurityContext | object | `{}` |  |
 | requirePublishSecret | bool | `true` |  |
 | resources | object | `{}` |  |
-| securityContext.fsGroup | int | `0` |  |
-| securityContext.runAsGroup | int | `0` |  |
-| securityContext.runAsUser | int | `0` |  |
+| securityContext | object | `{}` |  |
 | service.name | string | `"http"` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
